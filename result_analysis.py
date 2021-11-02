@@ -45,7 +45,7 @@ def NiceGraph2D(axes, nameX, nameY, mincoord = [np.NaN, np.NaN], maxcoord = [np.
         
     return
 
-def present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha):
+def present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha, seed):
     
     all_points = np.concatenate((houses, malls, [city_center]), axis = 0)
 
@@ -67,7 +67,7 @@ def present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha):
 
     plt.tight_layout()
     
-    
+    # fig1.savefig(f'Results/Graph_{np.shape(all_points)[0]}points_{alpha}alpha_{seed}seed.pdf', transparent = True)
     
     
     return
