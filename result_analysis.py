@@ -67,7 +67,7 @@ def present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha, s
 
     plt.tight_layout()
     
-    # fig1.savefig(f'Results/Graph_{np.shape(all_points)[0]}points_{alpha}alpha_{seed}seed.pdf', transparent = True)
+    fig1.savefig(f'Results/Graph_{np.shape(all_points)[0]}points_{alpha}alpha_{seed}seed.pdf', transparent = True)
     
     
     return

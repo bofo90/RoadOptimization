@@ -30,6 +30,9 @@ def obtain_Delaunay(houses_and_malls, plot=False):
     
     delaunay = Delaunay(houses_and_malls, qhull_options='Qc')
     
+    if delaunay.coplanar.size != 0:
+        raise UserWarning('The Delaunay graph gave non-connected points. Please check coplanarity of points.')
+    
     if plot:
         plt.triplot(houses_and_malls[:,0], houses_and_malls[:,1], delaunay.simplices)
         plt.plot(houses_and_malls[:,0], houses_and_malls[:,1], 'o')

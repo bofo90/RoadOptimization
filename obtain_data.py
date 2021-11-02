@@ -17,5 +17,4 @@ def generate_points(size_houses, size_malls, seed=0):
     
     city_center = np.random.random(2)*size_area
     
-    
     return houses, malls, city_center
