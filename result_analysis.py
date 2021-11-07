@@ -55,13 +55,13 @@ def present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha, s
     ax1.set_axis_off()
 
     for e in lr:
-        ax1.plot(all_points[e,0], all_points[e,1], c='b', zorder=0)
+        ax1.plot(all_points[e,0], all_points[e,1], c='#264653', zorder=0, linewidth=3)
     for e in er:
-        ax1.plot(all_points[e,0], all_points[e,1], c='r', zorder=0)
+        ax1.plot(all_points[e,0], all_points[e,1], c='#2A9D8F', zorder=0, linewidth=3)
     
-    ax1.scatter(houses[:,0],houses[:,1], s=50, zorder=10)
-    ax1.scatter(malls[:,0], malls[:,1], s=100, zorder=10)
-    ax1.scatter(city_center[0], city_center[1], s=70, zorder=10)
+    ax1.scatter(houses[:,0],houses[:,1], s=100, zorder=10, c='#E9C46A')
+    ax1.scatter(malls[:,0], malls[:,1], s=200, zorder=10, c='#F4A261')
+    ax1.scatter(city_center[0], city_center[1], s=150, zorder=10, c='#E76F51')
     
     ax1.set_title(f'Cost: {lr_len*alpha+er_len*(1-alpha):.2f}')
 
