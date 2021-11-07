@@ -21,7 +21,8 @@ size_houses = amount of houses to create.
 size_malls = amount of malls to create.
 
 houses, malls and city_center = coordinates in 2D of all the houses, malls and
-                                city center, respectively
+                                city center, respectively.
+                                
 lr = array showing the local roads where for every road, the first number is 
      the starting point and the second the ending point of the road.
 er = array showing the high-speed (express) roads. The concept is the same as
