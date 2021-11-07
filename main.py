@@ -2,10 +2,10 @@ from obtain_data import generate_points
 from model_connections import connect_points
 from result_analysis import present_results
 
-alpha = 0.999
-seed = 1
+alpha = 0.1
+seed = 0
 
-houses, malls, city_center = generate_points(size_houses=20, size_malls=20, seed=seed)
+houses, malls, city_center = generate_points(size_houses=15, size_malls=10, seed=seed)
 
 lr, er, lr_len, er_len = connect_points(houses, malls, city_center, alpha)
 
