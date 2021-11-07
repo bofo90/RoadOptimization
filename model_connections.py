@@ -91,15 +91,19 @@ def add_city_center(houses_and_malls, city_center, size_houses, opt_edges, opt_w
 def remove_unnec_malls(compl_edges, compl_weights, size_houses):
     
     pos, counts = np.unique(compl_edges, return_counts=True)
-    
     single_conn_malls = (pos[:-1]>=size_houses) & (counts[:-1]==1)
     
     red_edges = compl_edges
     red_weights = compl_weights
-    for i in pos[:-1][single_conn_malls]:
-        edge, _ = np.where(red_edges == i)
-        red_edges = np.delete(red_edges, edge, axis = 0)
-        red_weights = np.delete(red_weights, edge, axis = 0)
+    while single_conn_malls.any():
+        for i in pos[:-1][single_conn_malls]:
+            edge, _ = np.where(red_edges == i)
+            red_edges = np.delete(red_edges, edge, axis = 0)
+            red_weights = np.delete(red_weights, edge, axis = 0)
+        
+        pos, counts = np.unique(red_edges, return_counts=True)
+        single_conn_malls = (pos[:-1]>=size_houses) & (counts[:-1]==1)
+        
     
     return red_edges, red_weights
 
