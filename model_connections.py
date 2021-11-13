@@ -5,6 +5,8 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import minimum_spanning_tree
 from scipy.spatial import distance
 
+import result_analysis as resan
+
 
 def connect_points(houses, malls, city_center, alpha):
     """
@@ -29,11 +31,18 @@ def connect_points(houses, malls, city_center, alpha):
     tot_size = size_houses + size_malls
     
     edges = obtain_Delaunay(houses_and_malls)
+    resan.simple_plot(houses, malls, [], edges, 'Delaunay triangulation')
+    
     weights = get_weights_edges(houses_and_malls, edges, alpha, size_houses)
     graph_w_weights = edges_to_matrix(tot_size, edges, weights)   
     opt_edges, opt_weights = obtain_MST(graph_w_weights)
+    resan.simple_plot(houses, malls, [], opt_edges, f'Optimal {alpha}')
+    
     compl_edges, compl_weights = add_city_center(houses_and_malls, city_center, 
                                                  size_houses, opt_edges, opt_weights)
+    resan.simple_plot(houses, malls, city_center, compl_edges, f'Opt_wcc {alpha}')
+    
+    
     red_edges, red_weights = remove_unnec_malls(compl_edges, compl_weights, size_houses)
 
     # Obtain the total length of the two types of roads

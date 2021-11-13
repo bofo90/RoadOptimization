@@ -1,6 +1,6 @@
 from obtain_data import generate_points
 from model_connections import connect_points
-from result_analysis import present_results
+import result_analysis as resan
 
 """
 This program receives the locations of houses, malls and one city center and 
@@ -35,16 +35,15 @@ the cost is calculated following the equation:
 """
 
 
-alpha = 0.1
+alpha = 0.9
 seed = 0
 size_houses = 15
 size_malls = 10
 
 
 houses, malls, city_center = generate_points(size_houses, size_malls, seed)
-
+resan.simple_plot(houses, malls, city_center, [], 'Town_Layout')
 lr, er, lr_len, er_len = connect_points(houses, malls, city_center, alpha)
-
-present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha, seed)
+resan.present_results(houses, malls, city_center, lr, er, lr_len, er_len, alpha, seed)
 
 # O(n log n) time and O(n) space
